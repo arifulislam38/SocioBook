@@ -7,10 +7,10 @@ import Sidebar from '../../Component/Sidebar/Sidebar';
 
 const HomeLayout = () => {
     return (
-        <div className='px-5'>
+        <div className=' w-full h-full fixed top-0'>
             <Navbar></Navbar>
             <NavbarSm></NavbarSm>
-            <section className='lg:flex md:flex gap-5 w-full border p-2'>
+            <section className='lg:flex md:flex w-full p-2 h-screen relative'>
                 <Sidebar></Sidebar>
                 <Outlet></Outlet>
             </section>

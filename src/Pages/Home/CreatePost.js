@@ -4,7 +4,7 @@ import { FcCamera } from 'react-icons/fc';
 
 const CreatePost = () => {
     return (
-        <section className='mb-10 shadow-md rounded-lg w-full p-5'>
+        <section className='mb-10 shadow-md rounded-lg w-full p-5 bg-white'>
                 <div className='w-full flex items-center gap-3'><span className='p-3 rounded-full bg-[#f8f9fa] text-xl'><MdOutlineCreate></MdOutlineCreate></span> <p>Create Post</p></div>
                 <form className='mt-3'>
                     <textarea className='w-full rounded-md border border-gray-400 px-3 py-2 text-black' name="" id="" cols="30" rows="5" placeholder='Whats on your mind?'></textarea>

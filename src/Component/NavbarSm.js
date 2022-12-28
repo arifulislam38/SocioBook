@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const NavbarSm = () => {
     return (
-        <nav className='flex lg:hidden justify-between items-center px-5 py-3 shadow-md'>
+        <nav className='flex lg:hidden justify-between items-center px-5 py-3 shadow-md bg-white w-full'>
            <Link to='/'><h1 className='text-2xl font-extrabold text-blue-700'>SocioBook</h1></Link>
            <div className='flex gap-2 text-lg font-sans'>
 
