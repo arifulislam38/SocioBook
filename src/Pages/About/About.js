@@ -6,7 +6,7 @@ const About = () => {
    const [modal, setModal] = useState(false);
 
     return (
-        <section className='lg:w-[80vw] w-full border h-screen  fixed right-0 p-5 bg-slate-500 flex flex-col justify-center items-center'>
+        <section className='lg:w-[80vw] w-full border h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
 
            
 

@@ -8,9 +8,9 @@ const Navbar = () => {
            <div>
                 <Link to='/'><h1 className='text-2xl font-extrabold text-blue-700'>SocioBook</h1></Link>
            </div>
-           <div>
-                <button>LogIn</button>
-                <button>Logout</button>
+           <div className='flex gap-5'>
+                <Link to='login'><button>LogIn</button></Link>
+                <Link to='register'><button>Register</button></Link>
            </div>
         </nav>
     );
