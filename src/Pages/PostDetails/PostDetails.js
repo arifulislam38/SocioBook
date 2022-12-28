@@ -1,8 +1,12 @@
 import React from 'react';
 import { BiLike } from 'react-icons/bi';
 import { FaRegComment } from 'react-icons/fa';
+import { useLoaderData } from 'react-router-dom';
 
 const PostDetails = () => {
+
+    const data = useLoaderData();
+    console.log(data.data);
     return (
         <section className='lg:w-[80vw] w-full border h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 '>
 
