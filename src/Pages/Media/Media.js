@@ -18,7 +18,7 @@ const Media = () => {
                     <img className='rounded-md bg-slate-400 w-full' src="logo192.png" alt="" />
                     <div className='flex justify-end w-full'>
                         
-                        <Link to='/media/postdetails'><button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button></Link>
+                        <Link to='/postdetails'><button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button></Link>
                     </div>
             </div>
 

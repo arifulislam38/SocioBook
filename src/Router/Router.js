@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 element: <About></About>
             },
             {
-                path: '/media/postdetails',
+                path: '/postdetails',
                 element: <PostDetails></PostDetails>
             },
             {
