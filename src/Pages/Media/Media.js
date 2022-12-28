@@ -1,6 +1,6 @@
 import React from 'react';
-import { BiLike } from 'react-icons/bi';
-import { FaRegComment } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 
 const Media = () => {
     return (
@@ -18,7 +18,7 @@ const Media = () => {
                     <img className='rounded-md bg-slate-400 w-full' src="logo192.png" alt="" />
                     <div className='flex justify-end w-full'>
                         
-                        <button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button>
+                        <Link to='/media/postdetails'><button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button></Link>
                     </div>
             </div>
 
