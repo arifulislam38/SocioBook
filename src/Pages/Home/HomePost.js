@@ -2,9 +2,10 @@ import React from 'react';
 import { BiLike } from 'react-icons/bi';
 import { FaRegComment } from 'react-icons/fa';
 
+
 const HomePost = () => {
     return (
-        <section className='w-full mb-10 flex flex-col gap-5'>
+        <section className='w-full mb-10 flex flex-col gap-5 pb-20'>
                 <div className='w-full rounded-md p-6 border flex flex-col gap-4  bg-white'>
                     <div className='w-full flex gap-3 items-center'>
                         <img className='w-[50px] h-[50px] rounded-full bg-slate-400' src="" alt="" />
