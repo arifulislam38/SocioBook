@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineCreate } from 'react-icons/md';
 import { FcCamera } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const { register, handleSubmit } = useForm();
 
     const createPost = (data) =>{
         const message = data.message;
         const image = data.image[0];
+        const date = new Date().toLocaleDateString();
         const formData = new FormData();
         formData.append('image',image);
         fetch(`https://api.imgbb.com/1/upload?key=dff193c18b03409189f3357e414ffb26`,{
@@ -18,9 +25,35 @@ const CreatePost = () => {
         })
         .then(res=>res.json())
         .then(imageData => {
-            console.log(imageData)
+            // console.log(imageData)
+            if(imageData.success){
+                const post = {
+                email : user?.email,
+                userName: user.displayName || 'Default User',
+                userPhoto: user.photoURL,
+                date,
+                text: message,
+                image: imageData.data.url,
+                likes: [],
+                comments: []
+                };
+                
+                fetch(`http://localhost:5000/createpost`,{
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(post)
+                })
+                .then(res=> res.json())
+                .then(data => {
+                    if(data.success){
+                        toast.success('successfully create post');
+                        navigate('/media');
+                    }
+                })
+            }
         });
-        // console.log(message, image)
     };
 
     return (
