@@ -11,7 +11,7 @@ const HomePost = () => {
     const {user} = useContext(AuthContext);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/posts`)
+        fetch(`http://https://sociobook-server.vercel.app/posts`)
         .then(res => res.json())
         .then(data => setPosts(data.data))
     },[]);

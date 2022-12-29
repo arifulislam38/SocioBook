@@ -7,7 +7,7 @@ const Media = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/allposts`)
+        fetch(`http://https://sociobook-server.vercel.app/allposts`)
         .then(res => res.json())
         .then(data => setPosts(data.data))
     },[]);

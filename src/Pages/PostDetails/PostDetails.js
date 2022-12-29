@@ -22,7 +22,7 @@ const PostDetails = () => {
     //     setLike('like')
     // };
     useEffect(()=>{
-        fetch(`http://localhost:5000/post/${id}`)
+        fetch(`http://https://sociobook-server.vercel.app/post/${id}`)
         .then(res =>res.json())
         .then(data => {
             setPost(data.data);
@@ -33,7 +33,7 @@ const PostDetails = () => {
     
 
     const onLikeClick = () =>{
-        fetch(`http://localhost:5000/like?email=${user?.email}&id=${post._id}`,{
+        fetch(`http://https://sociobook-server.vercel.app/like?email=${user?.email}&id=${post._id}`,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -55,7 +55,7 @@ const PostDetails = () => {
             date,
             comment
         };
-        fetch(`http://localhost:5000/comment?id=${post._id}`,{
+        fetch(`http://https://sociobook-server.vercel.app/comment?id=${post._id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
