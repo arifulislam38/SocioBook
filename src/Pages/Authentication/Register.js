@@ -30,7 +30,7 @@ const Register = () => {
             const user = result.user;
             console.log('register',user);
             event.target.reset();
-            fetch(`http://https://sociobook-server.vercel.app/createuser`,{
+            fetch(`https://sociobook-server.vercel.app/createuser`,{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'

@@ -11,7 +11,7 @@ const About = () => {
    const {user} = useContext(AuthContext);
 
    useEffect(()=>{
-    fetch(`http://https://sociobook-server.vercel.app/user?email=${user?.email}`)
+    fetch(`https://sociobook-server.vercel.app/user?email=${user?.email}`)
     .then(res => res.json())
     .then(data => {
         setProfile(data.data)
@@ -30,7 +30,7 @@ const About = () => {
             name,address,university
         };
 
-        fetch(`http://https://sociobook-server.vercel.app/user?email=${user?.email}`,{
+        fetch(`https://sociobook-server.vercel.app/user?email=${user?.email}`,{
             method: 'PATCH',
             headers:{
                 'content-type': 'application/json'

@@ -38,7 +38,7 @@ const CreatePost = () => {
                 comments: []
                 };
                 
-                fetch(`http://https://sociobook-server.vercel.app/createpost`,{
+                fetch(`https://sociobook-server.vercel.app/createpost`,{
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
