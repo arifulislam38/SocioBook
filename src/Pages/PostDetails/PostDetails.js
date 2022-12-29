@@ -79,10 +79,10 @@ const PostDetails = () => {
             <div className='w-full rounded-md p-6 border flex flex-col gap-4  bg-white'>
                     <div className='w-full flex gap-3 items-center'>
                         <img className='w-[50px] h-[50px] rounded-full bg-slate-400' src={post.userPhoto} alt="" />
-                        <p className='flex flex-col justify-center items-center'>
+                        <div className='flex flex-col text-start'>
                             <span className='font-semibold'>{post.userName}</span>
                             <span>{post.date}</span>
-                        </p>
+                        </div>
                     </div>
                     <p className='text-start'>{post.text}</p>
                     <img className='rounded-md bg-slate-400 w-full' src={post.image} alt="" />
@@ -101,9 +101,9 @@ const PostDetails = () => {
 
                         <div className='w-full p-3 bg-slate-400 rounded-md'>
                             <h1 className='text-lg text-start'>Write your comments here</h1>
-                            <form onSubmit={onCommentSubmit} className='lg:flex justify-between items-center gap-4 w-full'>
+                            <form onSubmit={onCommentSubmit} className='lg:flex justify-between items-center  gap-4 w-full'>
                                 <textarea className='border w-full lg:w-[85%] rounded-xl px-2 py-1' name="comment"  cols="40" rows="1"></textarea>
-                                <button className='px-4 py-1 bg-blue-500 rounded-lg text-xl' type="submit">Send</button>
+                                <button className='px-4 py-1 bg-blue-500 rounded-lg text-xl float-left lg:float-none mt-2 lg:mt-0' type="submit">Send</button>
                             </form>
                         </div>
 

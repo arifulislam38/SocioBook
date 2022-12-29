@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { BiLike } from 'react-icons/bi';
 import { FaRegComment } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
@@ -42,7 +43,7 @@ const HomePost = () => {
                                 <span>{post?.comments?.length} Comment</span>
                             </p>
                         </div>
-                        <button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button>
+                        <Link to={`/postdetails/${post._id}`}><button className='px-2 py-1 rounded-md bg-blue-700'>See Details</button></Link>
                     </div>
                 </div>
                 })

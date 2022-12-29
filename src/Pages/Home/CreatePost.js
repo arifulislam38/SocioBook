@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MdOutlineCreate } from 'react-icons/md';
 import { FcCamera } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
@@ -57,14 +57,14 @@ const CreatePost = () => {
     };
 
     return (
-        <section className='mb-10 shadow-md rounded-lg w-full p-5 bg-white'>
+        <section className='mb-5 shadow-md rounded-lg w-full p-5 bg-white'>
                 <div className='w-full flex items-center gap-3'><span className='p-3 rounded-full bg-[#f8f9fa] text-xl'><MdOutlineCreate></MdOutlineCreate></span> <p>Create Post</p></div>
                 <form onSubmit={handleSubmit(createPost)} className='mt-3'>
-                    <textarea className='w-full rounded-md border border-gray-400 px-3 py-2 text-black' {...register("message")} name="message" cols="30" rows="5" placeholder='Whats on your mind?'></textarea>
+                    <textarea className='w-full rounded-md border border-gray-400 px-3 py-2 text-black' {...register("message")} name="message" cols="30" rows="4" placeholder='Whats on your mind?'></textarea>
                     <div className='w-full flex justify-between items-center'>
-                        <input type="file" {...register("image")} id="file" name="image" className='hidden'/>
+                        <input type="file" {...register("image",{ required: false })} id="file" name="image" className='hidden'/>
                         <label for="file"><FcCamera className='text-2xl inline'></FcCamera> Photo/Video</label>
-                        <button className='bg-blue-700 py-1 px-2 rounded-md text-white text-xl' type="submit">Create Post</button>
+                        <button className={`bg-blue-500 py-1 px-2 rounded-md text-white text-xl`} type="submit" >Create Post</button>
                     </div>
                 </form>
             </section>
