@@ -14,13 +14,37 @@ const Register = () => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
+        const name = event.target.name.value;
+        const address = event.target.address.value;
+
+        const profile = {
+            name,
+            email,
+            password,
+            university: 'University not found',
+            address
+        };
+
         createUser(email,password)
         .then(result =>{
             const user = result.user;
             console.log('register',user);
             event.target.reset();
-            navigate(from, { replace: true });
-            setLoading(false);
+            fetch(`http://localhost:5000/createuser`,{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(profile)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    navigate(from, { replace: true });
+                    setLoading(false);
+                };
+            })
+            
         })
         .catch(err => console.log(err))
     };
@@ -29,6 +53,11 @@ const Register = () => {
             <div className='lg:w-[50%] rounded-md bg-white p-4'>
                 <h1 className='text-xl font-semibold text-blue-600 font-serif text-center mb-5'>Register in SocioBook</h1>
                 <form onSubmit={handleRegister} className='w-full p-2 flex flex-col gap-3'>
+
+                    <input className='w-full px-2 py-1 border rounded' type="text" name="name" placeholder='Your Name' />
+
+                    <input className='w-full px-2 py-1 border rounded' type="text" name="address" placeholder='Your address e.g, Chattogram' />
+
                     <input className='w-full px-2 py-1 border rounded' type="email" name="email" placeholder='Your Email' />
                     <input className='w-full px-2 py-1 border rounded' type="password" name="password" placeholder='Type Your password'/>
                     <p className='text-start text-lg'>Already have an account? <Link className='text-blue-400' to='/login'>Login</Link></p>

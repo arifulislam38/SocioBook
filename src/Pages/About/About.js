@@ -1,9 +1,48 @@
-import React, { useState } from 'react';
+
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const About = () => {
 
    const [modal, setModal] = useState(false);
+   const [profile, setProfile] = useState({});
+   const [loader, setLoader] = useState(true);
+   const {user} = useContext(AuthContext);
+
+   useEffect(()=>{
+    fetch(`http://localhost:5000/user?email=${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+        setProfile(data.data)
+    })
+   },[user?.email, loader]);
+
+
+   const onModalSubmit = (event) =>{
+        event.preventDefault();
+        setModal(false)
+        const name = event.target.name.value;
+        const address = event.target.address.value;
+        const university = event.target.university.value;
+
+        const profile = {
+            name,address,university
+        };
+
+        fetch(`http://localhost:5000/user?email=${user?.email}`,{
+            method: 'PATCH',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(profile)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setLoader(!loader)
+        });
+
+   }
 
     return (
         <section className='lg:w-[80vw] w-full border h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
@@ -19,19 +58,19 @@ const About = () => {
                 {/* modal active button  */}
                 <div className='border px-2 rounded'>
                     <p>Name:</p>
-                    <p>Ariful Islam</p>
+                    <p>{profile?.name}</p>
                 </div>
                 <div className='border px-2 rounded'>
                     <p>Email:</p>
-                    <p>mdariful@gmail.com</p>
+                    <p>{profile?.email}</p>
                 </div>
                 <div className='border px-2 rounded'>
                     <p>University:</p>
-                    <p>National University</p>
+                    <p>{profile?.university}</p>
                 </div>
                 <div className='border px-2 rounded'>
                     <p>Address:</p>
-                    <p>chittagong</p>
+                    <p>{profile?.address}</p>
                 </div>
             </div>
             
@@ -45,13 +84,17 @@ const About = () => {
                     <div className="modal">
                         <div className="modal-box relative">
                             <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                            <form className='w-full p-4 flex flex-col gap-3 mt-5'>
-                                <input className='w-full px-2 py-1 rounded border' type="text" name="name" id="" placeholder='your Name' />
-                                <input className='w-full px-2 py-1 rounded border' type="email" name="email" id="" placeholder='Your email' />
-                                <input className='w-full px-2 py-1 rounded border' type="text" name="university" id="" placeholder='university' />
-                                <input className='w-full px-2 py-1 rounded border' type="text" name="address" id="" placeholder='address'/>
+                            <form onSubmit={onModalSubmit} className='w-full p-4 flex flex-col gap-3 mt-5'>
+                                <input className='w-full px-2 py-1 rounded border' type="text" name="name" defaultValue={profile?.name} />
+
+                                <input className='w-full px-2 py-1 rounded border' type="email" name="email" defaultValue={profile?.email} disabled />
+
+                                <input className='w-full px-2 py-1 rounded border' type="text" name="university"  defaultValue={profile?.university} />
+
+                                <input className='w-full px-2 py-1 rounded border' type="text" name="address" defaultValue={profile?.address} />
+
                                 <div className='w-full flex justify-end px-4'>
-                                    <button onClick={()=>setModal(false)} className='bg-blue-500 rounded-md px-2 py-1' type="submit">Submit</button>
+                                    <button className='bg-blue-500 rounded-md px-2 py-1' type="submit">Submit</button>
                                 </div>
                             </form>
                         </div>
