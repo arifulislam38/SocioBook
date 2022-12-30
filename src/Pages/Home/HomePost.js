@@ -22,15 +22,15 @@ const HomePost = () => {
     },[]);
 
     if(loader){
-        return <span class="loader"></span>
+        return <span className="loader"></span>
     }
 
     return (
         <section className='w-full mb-10 flex flex-col gap-5 pb-20'>
 
             {
-                posts?.map(post => {
-                    return <div className='w-full rounded-md p-6 border flex flex-col gap-4  bg-white'>
+                posts?.map((post,i) => {
+                    return <div key={i} className='w-full rounded-md p-6 border flex flex-col gap-4  bg-white'>
                     <div className='w-full flex gap-3 items-center'>
                         <img className='w-[50px] h-[50px] rounded-full bg-slate-400' src={post?.userPhoto} alt="" />
                         <div className='flex flex-col text-start'>

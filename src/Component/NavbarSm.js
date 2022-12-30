@@ -3,17 +3,19 @@ import { CiVideoOn } from 'react-icons/ci';
 import { TiMessages } from 'react-icons/ti';
 import { SiAboutdotme } from 'react-icons/si';
 import { CgProfile } from 'react-icons/cg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const NavbarSm = () => {
 
     const {user,logOut,setLoading} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogOut = () =>{
         logOut()
         .then(result =>{
-            setLoading(false)
+            setLoading(false);
+            navigate('/')
         })
         .catch(err => console.log(err))
     };

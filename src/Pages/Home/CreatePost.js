@@ -25,7 +25,6 @@ const CreatePost = () => {
         })
         .then(res=>res.json())
         .then(imageData => {
-            // console.log(imageData)
             if(imageData.success){
                 const post = {
                 email : user?.email,
@@ -63,7 +62,7 @@ const CreatePost = () => {
                     <textarea className='w-full rounded-md border border-gray-400 px-3 py-2 text-black' {...register("message")} name="message" cols="30" rows="4" placeholder='Whats on your mind?'></textarea>
                     <div className='w-full flex justify-between items-center'>
                         <input type="file" {...register("image",{ required: false })} id="file" name="image" className='hidden'/>
-                        <label for="file"><FcCamera className='text-2xl inline'></FcCamera> Photo/Video</label>
+                        <label htmlFor="file"><FcCamera className='text-2xl inline'></FcCamera> Photo/Video</label>
                         <button className={`bg-blue-500 py-1 px-2 rounded-md text-white text-xl`} type="submit" >Create Post</button>
                     </div>
                 </form>

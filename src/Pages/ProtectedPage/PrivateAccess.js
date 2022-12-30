@@ -10,7 +10,7 @@ const PrivateAccess = ({children}) => {
     const location = useLocation();
 
     if(loading){
-        return  <div className='w-full h-screen grid place-items-center'><span class="loader"></span></div>
+        return  <div className='w-full h-screen grid place-items-center'><span className="loader"></span></div>
     }
 
     if(!user){

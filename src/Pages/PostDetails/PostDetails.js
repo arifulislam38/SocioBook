@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { BiLike } from 'react-icons/bi';
 import { FaRegComment } from 'react-icons/fa';
-import { useLoaderData, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const PostDetails = () => {
-
-    // const [like, setLike] = useState('like');
     const [post, setPost] = useState({});
     const [loader, setLoader] = useState(true);
 
@@ -16,21 +14,14 @@ const PostDetails = () => {
 
     const {id} = useParams();
 
-    // console.log(post.likes.includes(user?.email));
-
-    // if(post.likes.includes(user?.email)){
-    //     setLike('liked')
-    // }else{
-    //     setLike('like')
-    // };
+    
     useEffect(()=>{
         setLoad(true)
         fetch(`https://sociobook-server.vercel.app/post/${id}`)
         .then(res =>res.json())
         .then(data => {
             setPost(data.data);
-            setLoad(false)
-            console.log(data.data)
+            setLoad(false);
         })
     },[loader,id]);
     
@@ -71,13 +62,12 @@ const PostDetails = () => {
         .then(data => {
             setLoader(!loader);
             event.target.reset();
-            console.log(data.data);
         });
     };
 
     if(load){
         return <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 flex justify-center  mb-30'>
-            <span class="loader"></span>
+            <span className="loader"></span>
         </section>
     }
 
@@ -119,8 +109,8 @@ const PostDetails = () => {
 
 
                     {
-                        post?.comments?.map(p => {
-                            return <div className='w-full'>
+                        post?.comments?.map((p,i) => {
+                            return <div key={i} className='w-full'>
                                 <div className='w-full flex gap-3 items-center'>
                                     <img className='w-[50px] h-[50px] rounded-full bg-slate-400' src={p?.userPhoto} alt="" />
                                     <div className='flex flex-col bg-slate-400 rounded-md px-2 text-start'>

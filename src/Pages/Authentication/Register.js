@@ -4,7 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
 
-    const {createUser, setLoading} = useContext(AuthContext);
+    const {createUser, setLoading, updateUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -28,7 +28,6 @@ const Register = () => {
         createUser(email,password)
         .then(result =>{
             const user = result.user;
-            console.log('register',user);
             event.target.reset();
             fetch(`https://sociobook-server.vercel.app/createuser`,{
                 method: 'POST',
@@ -40,8 +39,13 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.success){
-                    navigate(from, { replace: true });
-                    setLoading(false);
+                    const userInfo = {name}
+                    updateUser(userInfo)
+                    .then(() => {
+                        navigate(from, { replace: true });
+                        setLoading(false);
+                    })
+                    .catch(err => console.log(err));
                 };
             })
             

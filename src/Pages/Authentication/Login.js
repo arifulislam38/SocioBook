@@ -17,7 +17,6 @@ const Login = () => {
         signIn(email,password)
         .then(result =>{
             const user = result.user;
-            console.log('login',user);
             setLoading(false);
             navigate(from, { replace: true });
         })
@@ -28,7 +27,6 @@ const Login = () => {
         googleSignIn()
         .then(result =>{
             const user = result.user;
-            console.log('google',user);
             setLoading(false);
             navigate(from, { replace: true });
         })

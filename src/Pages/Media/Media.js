@@ -19,7 +19,7 @@ const Media = () => {
 
     if(loader){
         return <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 flex justify-center  mb-30'>
-            <span class="loader"></span>
+            <span className="loader"></span>
         </section>
     }
 
@@ -27,8 +27,8 @@ const Media = () => {
         <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-36 pt-5 bg-slate-500 grid lg:grid-cols-3 gap-4 mb-30'>
 
             {
-                posts?.map(post =>{
-                    return <div className='bg-white rounded-md p-4 flex flex-col gap-3'>
+                posts?.map((post,i) =>{
+                    return <div key={i} className='bg-white rounded-md p-4 flex flex-col gap-3'>
                 <div className='w-full flex gap-3 items-center'>
                         <img className='w-[50px] h-[50px] rounded-full bg-slate-400' src={post?.userPhoto} alt="" />
                         <div className='flex flex-col text-start'>
