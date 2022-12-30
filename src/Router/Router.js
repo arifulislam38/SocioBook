@@ -3,15 +3,18 @@ import HomeLayout from "../Layouts/Main/HomeLayout";
 import About from "../Pages/About/About";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Media from "../Pages/Media/Media";
 import Message from "../Pages/Message/Message";
 import PostDetails from "../Pages/PostDetails/PostDetails";
+import PrivateAccess from "../Pages/ProtectedPage/PrivateAccess";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout></HomeLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -19,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/media',
-                element: <Media></Media>
+                element: <PrivateAccess><Media></Media></PrivateAccess>
             },
             {
                 path: '/message',
@@ -27,11 +30,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <About></About>
+                element: <PrivateAccess><About></About></PrivateAccess>
             },
             {
                 path: '/postdetails/:id',
-                element: <PostDetails></PostDetails>
+                element: <PrivateAccess><PostDetails></PostDetails></PrivateAccess>
             },
             {
                 path: '/login',

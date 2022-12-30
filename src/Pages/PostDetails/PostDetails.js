@@ -9,6 +9,8 @@ const PostDetails = () => {
     // const [like, setLike] = useState('like');
     const [post, setPost] = useState({});
     const [loader, setLoader] = useState(true);
+
+    const [load, setLoad] = useState(false);
     
     const {user} = useContext(AuthContext);
 
@@ -22,10 +24,12 @@ const PostDetails = () => {
     //     setLike('like')
     // };
     useEffect(()=>{
+        setLoad(true)
         fetch(`https://sociobook-server.vercel.app/post/${id}`)
         .then(res =>res.json())
         .then(data => {
             setPost(data.data);
+            setLoad(false)
             console.log(data.data)
         })
     },[loader,id]);
@@ -71,9 +75,15 @@ const PostDetails = () => {
         });
     };
 
+    if(load){
+        return <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 flex justify-center  mb-30'>
+            <span class="loader"></span>
+        </section>
+    }
+
     
     return (
-        <section className='lg:w-[80vw] w-full border h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 '>
+        <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 '>
 
 
             <div className='w-full rounded-md p-6 border flex flex-col gap-4  bg-white'>

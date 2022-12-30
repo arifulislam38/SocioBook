@@ -7,7 +7,7 @@ import Sidebar from '../../Component/Sidebar/Sidebar';
 
 const HomeLayout = () => {
     return (
-        <div className=' w-full h-full fixed top-0'>
+        <div className=' w-full h-auto fixed top-0'>
             <Navbar></Navbar>
             <NavbarSm></NavbarSm>
             <section className='lg:flex md:flex w-full p-2 h-screen relative'>

@@ -6,7 +6,7 @@ import { SiAboutdotme } from 'react-icons/si';
 
 const Sidebar = () => {
     return (
-        <aside className='w-[20vw] h-screen border hidden lg:flex flex-col gap-3 md:flex sm:hidden fixed left-0 bg-slate-500 p-5'>
+        <aside className='w-[20vw] h-screen  hidden lg:flex flex-col gap-3 md:flex sm:hidden fixed left-0 bg-slate-500 p-5'>
             
                 <div className='rounded-md w-full bg-white flex flex-col gap-5 px-2 py-3'>
                     <p className='text-xl font-serif'> Navigation</p>

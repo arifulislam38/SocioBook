@@ -5,15 +5,26 @@ import { Link } from 'react-router-dom';
 const Media = () => {
 
     const [posts, setPosts] = useState([]);
+    const [loader, setLoader] = useState(false)
 
     useEffect(()=>{
+        setLoader(true)
         fetch(`https://sociobook-server.vercel.app/allposts`)
         .then(res => res.json())
-        .then(data => setPosts(data.data))
+        .then(data => {
+            setPosts(data.data)
+            setLoader(false)
+        })
     },[]);
 
+    if(loader){
+        return <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 flex justify-center  mb-30'>
+            <span class="loader"></span>
+        </section>
+    }
+
     return (
-        <section className='lg:w-[80vw] w-full border h-screen overflow-y-scroll fixed right-0 px-5 pb-24 pt-5 bg-slate-500 grid lg:grid-cols-3 gap-4 mb-30'>
+        <section className='lg:w-[80vw] w-full  h-screen overflow-y-scroll fixed right-0 px-5 pb-36 pt-5 bg-slate-500 grid lg:grid-cols-3 gap-4 mb-30'>
 
             {
                 posts?.map(post =>{

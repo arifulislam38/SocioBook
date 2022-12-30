@@ -9,12 +9,21 @@ const HomePost = () => {
 
     const [posts, setPosts] = useState([]);
     const {user} = useContext(AuthContext);
+    const [loader, setLoader] = useState(false);
 
     useEffect(()=>{
+        setLoader(true)
         fetch(`https://sociobook-server.vercel.app/posts`)
         .then(res => res.json())
-        .then(data => setPosts(data.data))
+        .then(data => {
+            setPosts(data.data)
+            setLoader(false)
+        })
     },[]);
+
+    if(loader){
+        return <span class="loader"></span>
+    }
 
     return (
         <section className='w-full mb-10 flex flex-col gap-5 pb-20'>

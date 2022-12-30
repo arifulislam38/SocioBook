@@ -49,7 +49,7 @@ const Register = () => {
         .catch(err => console.log(err))
     };
     return (
-        <section className='lg:w-[80vw] w-full border h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
+        <section className='lg:w-[80vw] w-full  h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
             <div className='lg:w-[50%] rounded-md bg-white p-4'>
                 <h1 className='text-xl font-semibold text-blue-600 font-serif text-center mb-5'>Register in SocioBook</h1>
                 <form onSubmit={handleRegister} className='w-full p-2 flex flex-col gap-3'>

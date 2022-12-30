@@ -45,7 +45,7 @@ const About = () => {
    }
 
     return (
-        <section className='lg:w-[80vw] w-full border h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
+        <section className='lg:w-[80vw] w-full  h-screen  fixed right-0 p-5 bg-slate-500 lg:flex flex-col justify-center items-center'>
 
            
 
